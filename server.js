@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const router = require('./routes/userRoutes');
+const weatherRoutes = require("./routes/weatherRoutes");
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(cors());
 connectDB();
 
 app.use('/api/users', router);
+app.use("/api/weather", weatherRoutes);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
